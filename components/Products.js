@@ -26,7 +26,7 @@ const products = [
   {
     id: 2,
     title: "Corn",
-    image: "/Corn.jpeg",
+    image: "/corn.jpeg",
     description: "Naturally grown corn, packed with essential vitamins and a rich, crunchy taste.",
   },
   {
