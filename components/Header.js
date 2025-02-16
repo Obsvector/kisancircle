@@ -33,7 +33,7 @@ const Header = () => {
             <ul className={`lg:flex md:flex hidden space-x-10 ${outfit.className} font-bold `}>
                 <li className={`${pathname === "/" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/'>Home</Link></li>
                 <li className={`${pathname === "/products" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/products'>Products</Link></li>
-                <li className={`${pathname === "/whyus" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/about'>Why Choose Us</Link></li>
+                <li className={`${pathname === "/whyus" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/whyus'>Why Choose Us</Link></li>
                 <li className={`${pathname === "/contact" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/contact'>Contact Us</Link></li>
             </ul>
         </div>
@@ -51,7 +51,7 @@ const Header = () => {
                 <ul className={` ${outfit.className} font-bold space-y-2`}>
                 <li className={`${pathname === "/" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/'>Home</Link></li>
                 <li className={`${pathname === "/products" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/products'>Products</Link></li>
-                <li className={`${pathname === "/Whyus" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/about'>Why Choose Us</Link></li>
+                <li className={`${pathname === "/Whyus" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/whyus'>Why Choose Us</Link></li>
                 <li className={`${pathname === "/contact" ? "text-[#308634]" : "text-[#0e3410]"} text-[18px]`}><Link href='/contact'>Contact Us</Link></li>
                 </ul>
             </div>

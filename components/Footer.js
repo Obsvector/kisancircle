@@ -46,7 +46,6 @@ const Footer = () => {
             <div className="flex flex-col space-y-2 mt-2">
               <Link href="/" className={`hover:underline ${poppins.className}`}>Home</Link>
               <Link href="/products" className={`hover:underline ${poppins.className}`}>Products</Link>
-              <Link href="/about" className={`hover:underline ${poppins.className}`}>About Us</Link>
               <Link href="/contact" className={`hover:underline ${poppins.className}`}>Contact</Link>
             </div>
           </div>
