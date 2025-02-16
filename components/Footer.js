@@ -19,13 +19,13 @@ const outfit = Outfit({
 const Footer = () => {
   return (
     <footer className="bg-[#69AD6C] text-white font-semibold py-10">
-      <div className="mx-auto px-6 lg:px-20">
+      <div className="mx-auto px-6 lg:px-10 max-w-7xl">
         
         {/* Flex Container */}
-        <div className="flex justify-center items-start gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-center md:items-start gap-8 text-center md:text-left">
           
           {/* Brand Section */}
-          <div className="w-full md:w-1/3">
+          <div className="w-full md:w-1/3 flex flex-col items-center md:items-start">
             <div className="w-40">
               <Image
                 src="/Logo.png"
@@ -54,13 +54,13 @@ const Footer = () => {
           <div className="w-full md:w-1/3">
             <h3 className={`text-lg font-semibold ${outfit.className}`}>Contact Us</h3>
             <div className="mt-2 space-y-1">
-              <p className={`text-sm ${poppins.className}`}>📍Guntur, India</p>
+              <p className={`text-sm ${poppins.className}`}>📍 Guntur, India</p>
               <p className={`text-sm ${poppins.className}`}>📞 +91 9866202130</p>
               <p className={`text-sm ${poppins.className}`}>✉️ support@kisancircle.com</p>
             </div>
 
             {/* Social Media Icons */}
-            <div className="flex space-x-4 mt-4">
+            <div className="flex justify-center md:justify-start space-x-4 mt-4">
               <a href="#" className="hover:opacity-80"><FaFacebookF size={20} /></a>
               <a href="#" className="hover:opacity-80"><FaInstagram size={20} /></a>
               <a href="#" className="hover:opacity-80"><FaTwitter size={20} /></a>
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         {/* Copyright */}
-        <div className="border-t border-white/30 flex flex-wrap justify-evenly mt-8 pt-4 text-center text-sm">
+        <div className="border-t border-white/30 flex flex-col md:flex-row justify-center md:justify-between mt-8 pt-4 text-center text-sm">
           <div className={poppins.className}>© {new Date().getFullYear()} KisanCircle. All rights reserved.</div>
           <div>
             <Link href="https://www.nandak.co" className={poppins.className}>
@@ -79,7 +79,6 @@ const Footer = () => {
             </Link>
           </div>
         </div>
-
       </div>
     </footer>
   );
