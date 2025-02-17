@@ -56,7 +56,7 @@ const Footer = () => {
             <div className="mt-2 space-y-1">
               <p className={`text-sm ${poppins.className}`}>📍 Guntur, India</p>
               <p className={`text-sm ${poppins.className}`}>📞 +91 9866202130</p>
-              <p className={`text-sm ${poppins.className}`}>✉️ support@kisancircle.com</p>
+              <p className={`text-sm ${poppins.className}`}>✉️ Circlekisan@gmail.com</p>
             </div>
 
             {/* Social Media Icons */}
