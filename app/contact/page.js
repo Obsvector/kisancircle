@@ -29,6 +29,7 @@ const ContactPage = () => {
   const sendEmail = (e) => {
     e.preventDefault();
     setLoading(true);
+    setError(""); // Clear previous error messages
 
     // Check for empty fields
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
@@ -48,14 +49,13 @@ const ContactPage = () => {
       .then(
         (result) => {
           console.log("Email sent successfully:", result.text);
-          alert("Thank you for reaching out! We'll get back to you soon.");
-          setIsSubmitted(true);
+          setIsSubmitted(true); // Show success message
           setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
-          setError("");
+          setError(""); // Clear any error messages
         },
         (error) => {
           console.log("Email send error:", error.text);
-          alert("Something went wrong! Please try again later.");
+          setError("Something went wrong! Please try again later.");
         }
       )
       .finally(() => setLoading(false));
@@ -72,8 +72,15 @@ const ContactPage = () => {
           Contact Us
         </h2>
 
+        {/* Display error message if present */}
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
-        {isSubmitted && <p className="text-green-500 text-center mb-4">Message sent successfully!</p>}
+
+        {/* Display success message if form is submitted */}
+        {isSubmitted && (
+          <p className="text-green-500 text-center mb-4">
+            ✅ Thank you for reaching out! We&apos;ll get back to you soon.
+          </p>
+        )}
 
         <form ref={form} onSubmit={sendEmail} className="space-y-5">
           <div>
