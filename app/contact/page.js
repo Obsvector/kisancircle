@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { motion } from "framer-motion";
+import emailjs from "emailjs-com";
 
 const fadeIn = {
   hidden: { opacity: 0, y: 30 },
@@ -8,6 +9,8 @@ const fadeIn = {
 };
 
 const ContactPage = () => {
+  const form = useRef(null);
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -15,25 +18,47 @@ const ContactPage = () => {
     message: "",
   });
 
+  const [loading, setLoading] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const sendEmail = (e) => {
     e.preventDefault();
+    setLoading(true);
 
-    // Basic validation
+    // Check for empty fields
     if (!formData.name || !formData.email || !formData.phone || !formData.message) {
       setError("All fields are required!");
+      setLoading(false);
       return;
     }
 
-    setError("");
-    alert("Form submitted successfully!");
-    
-    // Here you can integrate with API or backend service
+    // Send email via EmailJS
+    emailjs
+      .sendForm(
+        "service_pjsgvpy", // Replace with your EmailJS service ID
+        "template_4hd0cl8", // Replace with your EmailJS template ID
+        form.current,
+        "ptdFhOgKHaZ8Hvhxc" // Replace with your EmailJS public key
+      )
+      .then(
+        (result) => {
+          console.log("Email sent successfully:", result.text);
+          alert("Thank you for reaching out! We'll get back to you soon.");
+          setIsSubmitted(true);
+          setFormData({ name: "", email: "", phone: "", message: "" }); // Reset form
+          setError("");
+        },
+        (error) => {
+          console.log("Email send error:", error.text);
+          alert("Something went wrong! Please try again later.");
+        }
+      )
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -48,8 +73,9 @@ const ContactPage = () => {
         </h2>
 
         {error && <p className="text-red-500 text-center mb-4">{error}</p>}
+        {isSubmitted && <p className="text-green-500 text-center mb-4">Message sent successfully!</p>}
 
-        <form onSubmit={handleSubmit} className="space-y-5">
+        <form ref={form} onSubmit={sendEmail} className="space-y-5">
           <div>
             <label className="block text-gray-700 font-medium">Name</label>
             <input
@@ -59,6 +85,7 @@ const ContactPage = () => {
               onChange={handleChange}
               placeholder="Enter your name"
               className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#69AD6C]"
+              required
             />
           </div>
 
@@ -71,6 +98,7 @@ const ContactPage = () => {
               onChange={handleChange}
               placeholder="Enter your email"
               className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#69AD6C]"
+              required
             />
           </div>
 
@@ -83,6 +111,7 @@ const ContactPage = () => {
               onChange={handleChange}
               placeholder="Enter your phone number"
               className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#69AD6C]"
+              required
             />
           </div>
 
@@ -95,16 +124,20 @@ const ContactPage = () => {
               placeholder="Enter your message"
               rows="4"
               className="w-full p-3 mt-1 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#69AD6C]"
+              required
             ></textarea>
           </div>
 
           <motion.button
             type="submit"
+            disabled={loading}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="w-full bg-[#69AD6C] text-white py-3 rounded-md text-lg font-medium shadow-md hover:shadow-lg transition-all"
+            className={`w-full text-white py-3 rounded-md text-lg font-medium shadow-md hover:shadow-lg transition-all ${
+              loading ? "bg-gray-500" : "bg-[#69AD6C]"
+            }`}
           >
-            Send Message
+            {loading ? "Sending..." : "Send Message"}
           </motion.button>
         </form>
       </motion.div>
