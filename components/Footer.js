@@ -74,7 +74,7 @@ const Footer = () => {
         <div className="border-t border-white/30 flex flex-col md:flex-row justify-center md:justify-between mt-8 pt-4 text-center text-sm">
           <div className={poppins.className}>© {new Date().getFullYear()} KisanCircle. All rights reserved.</div>
           <div>
-            <Link href="https://www.nandak.co" className={poppins.className}>
+            <Link href="https://www.obsvector.com" className={poppins.className}>
               Designed and Developed by ObsVector Private Limited
             </Link>
           </div>
