@@ -75,7 +75,7 @@ const Footer = () => {
           <div className={poppins.className}>© {new Date().getFullYear()} KisanCircle. All rights reserved.</div>
           <div>
             <Link href="https://www.nandak.co" className={poppins.className}>
-              Designed and Developed by Nandak Innovations Private Limited
+              Designed and Developed by ObsVector Private Limited
             </Link>
           </div>
         </div>
